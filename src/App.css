@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.gradient-border {
+  --borderWidth: 8px;
+  background: #fff;
+  padding: 0px;
+  margin: 20px;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(
+    60deg,
+    #d9a1c8,
+    #f2bfca,
+    #ff968a,
+    #f9d5c6,
+    #ffedd6,
+    #ffffb5,
+    #55cbcd,
+    #bddad1,
+    #d4f0f0
+  );
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 2s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.rotating-border {
+  position: relative;
+  overflow: hidden;
+  padding: 15px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.rotating-border:before {
+  content: "";
+  display: block;
+  background: conic-gradient(
+    #b7d6fb,
+    #b3faed,
+    #bec3fa,
+    #ddbded,
+    #fabfd9,
+    #f5dbcc,
+    #faecb9,
+    #faecb9,
+    #f5dbcc,
+    #fabfd9,
+    #ddbded,
+    #bec3fa,
+    #b3faed,
+    #b7d6fb
+  );
+  width: calc(100% * 1.41421356237);
+  padding-bottom: calc(100% * 1.41421356237);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  z-index: -2;
+  animation: spin 4s linear infinite;
+}
+
+.rotating-border :after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background: white;
+  z-index: -1;
+  border-radius: 2px;
+}
